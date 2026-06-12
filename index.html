@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SATYA X - AI Fake News Detector</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    margin:0;
+}
+
+.container{
+    width:80%;
+    max-width:800px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:5px;
+}
+
+.tagline{
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+textarea{
+    width:95%;
+    height:220px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    resize:none;
+    font-size:16px;
+}
+
+button{
+    margin-top:20px;
+    background:#3b82f6;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.result{
+    margin-top:25px;
+    padding:15px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.1);
+}
+
+.footer{
+    margin-top:20px;
+    color:#94a3b8;
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🛡️ SATYA X</h1>
+
+<p class="tagline">
+AI Powered Fake News Detection System
+</p>
+
+<form action="/predict" method="POST">
+
+<textarea
+name="news"
+placeholder="Paste news article here...">{{ news_text if news_text else '' }}</textarea>
+
+<br>
+
+<button type="submit">
+🔍 Analyze News
+</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+
+<h2>{{ prediction }}</h2>
+
+<h3>Confidence: {{ confidence }}%</h3>
+
+</div>
+{% endif %}
+
+<div class="footer">
+Built using Machine Learning • Flask • Python
+</div>
+
+</div>
+
+</body>
+</html>
